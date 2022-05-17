@@ -21,7 +21,7 @@ Hello.propTypes = {
   // 必須項目かどうかも記述する
   children: string.isRequired,
   bang: bool,
-  //   shape = styleの定義ができる
+  //  shape = styleの定義ができる
   style: shape(),
 };
 
