@@ -13,8 +13,11 @@
   },
   "plugins": ["react"],
   "rules": {
+    // 定義の前に呼んでもOK
     "no-use-before-define": 0,
     // ダブルクォートでもOK
-    "quotes": "off"
+    "quotes": "off",
+    // navigationのエラーを非表示に
+    "react/prop-types": ["error", { "ignore": ["navigation"] }]
   }
 }

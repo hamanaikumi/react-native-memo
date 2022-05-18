@@ -4,17 +4,15 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  Alert,
   TouchableOpacity,
 } from "react-native";
 
-import AppBar from "../components/AppBar";
 import Button from "../components/Button";
 
-export default function SignUpScreen() {
+export default function SignUpScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
-      <AppBar />
       <View style={styles.inner}>
         <Text style={styles.title}>Sign Up</Text>
         <TextInput style={styles.input} value="email address" />
@@ -23,13 +21,18 @@ export default function SignUpScreen() {
         <Button
           label="Submit"
           onPress={() => {
-            Alert.alert("Submit");
+            // stack navigationの履歴を消して、0番目に登録している画面に遷移
+            navigation.reset({ index: 0, routes: [{ name: "MemoList" }] });
           }}
         />
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.reset({ index: 0, routes: [{ name: "Login" }] });
+            }}
+          >
             <Text style={styles.footerLink}>Log In.</Text>
           </TouchableOpacity>
         </View>
