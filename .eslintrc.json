@@ -20,6 +20,10 @@
     // navigationのエラーを非表示に
     "react/prop-types": ["error", { "ignore": ["navigation"] }],
     "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "object-curly-newline": ["off"],
+    "comma-dangle": ["off"],
+    "operator-linebreak": ["off"],
+    "indent": ["off"]
   }
 }
