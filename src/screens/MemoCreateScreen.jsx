@@ -15,7 +15,7 @@ export default function MemoCreateScreen(props) {
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
     // ユーザーごとにcollectionを分ける
-    const ref = db.collection(`users/${currentUser.uid}/ memo`);
+    const ref = db.collection(`users/${currentUser.uid}/memos`);
     ref
       .add({
         bodyText,
