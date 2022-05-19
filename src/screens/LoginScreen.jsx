@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -15,6 +15,20 @@ export default function LoginScreen(props) {
   const { navigation } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // 画面が最小に表示された時
+  useEffect(() => {
+    // ユーザーの状態を監視
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      // ログインしていた場合
+      if (user) {
+        // stack navigationの履歴を消して、0番目に登録している画面に遷移
+        navigation.reset({ index: 0, routes: [{ name: "MemoList" }] });
+      }
+    });
+    // 画面が消える主観に監視を止める
+    return unsubscribe;
+  }, []);
 
   const handlePress = () => {
     firebase

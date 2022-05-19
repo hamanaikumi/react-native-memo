@@ -18,6 +18,7 @@
     // ダブルクォートでもOK
     "quotes": "off",
     // navigationのエラーを非表示に
-    "react/prop-types": ["error", { "ignore": ["navigation"] }]
+    "react/prop-types": ["error", { "ignore": ["navigation"] }],
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }]
   }
 }
