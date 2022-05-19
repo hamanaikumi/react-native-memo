@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import { shape, string, instanceOf, arrayOf } from "prop-types";
 
 import Icon from "./Icon";
+import { dateToString } from "../utils";
 
 export default function MemoList(props) {
   const { memos } = props;
@@ -20,7 +21,8 @@ export default function MemoList(props) {
     <TouchableOpacity
       style={styles.memoListItem}
       onPress={() => {
-        navigation.navigate("MemoDetail");
+        // 第二引数のデータ、route.paramsとして渡される
+        navigation.navigate("MemoDetail", { id: item.id });
       }}
     >
       <View>
@@ -28,7 +30,9 @@ export default function MemoList(props) {
         <Text style={styles.memoListItemTitle} numberOfLines={1}>
           {item.bodyText}
         </Text>
-        <Text style={styles.memoListItemDate}>{String(item.updatedAt)}</Text>
+        <Text style={styles.memoListItemDate}>
+          {dateToString(item.updatedAt)}
+        </Text>
       </View>
       <TouchableOpacity
         style={styles.memoDelete}
