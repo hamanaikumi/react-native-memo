@@ -10,11 +10,13 @@ import {
 import firebase from "firebase";
 
 import Button from "../components/Button";
+import Loading from "../components/Loading";
 
 export default function LoginScreen(props) {
   const { navigation } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   // 画面が最小に表示された時
   useEffect(() => {
@@ -24,6 +26,9 @@ export default function LoginScreen(props) {
       if (user) {
         // stack navigationの履歴を消して、0番目に登録している画面に遷移
         navigation.reset({ index: 0, routes: [{ name: "MemoList" }] });
+      } else {
+        // 判定中にローディングを走らせる
+        setLoading(false);
       }
     });
     // 画面が消える主観に監視を止める
@@ -31,6 +36,7 @@ export default function LoginScreen(props) {
   }, []);
 
   const handlePress = () => {
+    setLoading(true);
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -43,11 +49,16 @@ export default function LoginScreen(props) {
       .catch((error) => {
         console.log(error.code, error.message);
         Alert.alert(error.code);
+      })
+      // 成功でも失敗でもローディング
+      .then(() => {
+        setLoading(false);
       });
   };
 
   return (
     <View style={styles.container}>
+      <Loading isLoading={isLoading} />
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
         <TextInput
