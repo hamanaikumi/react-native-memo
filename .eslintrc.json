@@ -23,7 +23,6 @@
     "import/prefer-default-export": 0,
     "object-curly-newline": ["off"],
     "comma-dangle": ["off"],
-    "operator-linebreak": ["off"],
-    "indent": ["off"]
+    "operator-linebreak": ["off"]
   }
 }

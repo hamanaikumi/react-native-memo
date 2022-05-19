@@ -46,7 +46,7 @@ export default function MemoList(props) {
         navigation.navigate("MemoDetail", { id: item.id });
       }}
     >
-      <View>
+      <View style={styles.memoInner}>
         {/* 1行で表示 */}
         <Text style={styles.memoListItemTitle} numberOfLines={1}>
           {item.bodyText}
@@ -101,6 +101,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: "rgba(0,0,0,0.15)",
+  },
+  memoInner: {
+    // 可能な限りスペースを確保
+    flex: 1,
   },
   memoListItemTitle: {
     fontSize: 16,

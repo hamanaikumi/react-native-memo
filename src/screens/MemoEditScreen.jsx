@@ -70,8 +70,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputContainer: {
-    paddingHorizontal: 27,
-    paddingVertical: 32,
     // 余白を画面いっぱいに広げる
     flex: 1,
   },
@@ -82,5 +80,9 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
     fontSize: 16,
     lineHeight: 24,
+    // スクロールバーの調整
+    paddingTop: 32,
+    paddingHorizontal: 27,
+    paddingVertical: 32,
   },
 });
