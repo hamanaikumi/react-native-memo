@@ -8,6 +8,7 @@ import {
   Alert,
 } from "react-native";
 import firebase from "firebase";
+import { translateError } from "../utils";
 
 import Button from "../components/Button";
 import Loading from "../components/Loading";
@@ -47,10 +48,10 @@ export default function LoginScreen(props) {
         navigation.reset({ index: 0, routes: [{ name: "MemoList" }] });
       })
       .catch((error) => {
-        console.log(error.code, error.message);
-        Alert.alert(error.code);
+        const errorMsg = translateError(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
       })
-      // 成功でも失敗でもローディング
+      // 成功でも失敗でもローディング終了
       .then(() => {
         setLoading(false);
       });
